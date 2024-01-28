@@ -47,6 +47,7 @@
 .u-red-border {
   transition: border-color .5s;
   border: 1px solid var(--light-wine-red);
+  border-radius: .5rem;
 }
 /* components */
 .app {
@@ -106,35 +107,32 @@
   div:nth-of-type(2) {
     height: 3.5rem;
     padding: 0 1rem;
-    * {
-      height: 3.5rem;
-      line-height: 3.5rem;
-      font-size: 1.2rem;
-    }
+    display: grid;
+    grid-template-areas: 'a . b c d . e';
+    place-items: center;
     &:focus-within {
       box-shadow: var(--shadow);
     }
+    * {
+      font-size: 1rem;
+      padding: .5rem .5rem;
+    }
     p {
-      margin-right: 7rem;
+      grid-area: a;
+      justify-self: start;
     }
     button:first-of-type {
-      flex: .5;
+      grid-area: b;
     }
     button:nth-of-type(2) {
-      flex: 1;
+      grid-area: c;
     }
     button:nth-of-type(3) {
-      flex: 1.5;
+      grid-area: d;
     }
     button:nth-of-type(4) {
-      margin-left: 4rem;
-    }
-    button:not(:last-of-type) {
-      box-sizing: content-box;
-      height: 2.3rem;
-      line-height: 2.3rem;
-      margin: auto;
-      border-radius: .5rem;
+      grid-area: e;
+      justify-self: end;
     }
   }
   div:nth-of-type(n+3) {
