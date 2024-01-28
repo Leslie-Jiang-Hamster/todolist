@@ -26,6 +26,9 @@
   --gray-border: 1px solid var(--border-gray);
   --title-shadow: 2px 2px 3px var(--light-wine-red);
 }
+button {
+  cursor: pointer;
+}
 /* util classes */
 .u-container {
   display: flex;
@@ -108,8 +111,7 @@
     height: 3.5rem;
     padding: 0 1rem;
     display: grid;
-    grid-template-columns: repeat(6, 1fr), 1.2fr;
-    grid-template-areas: 'a . b c d . e';
+    grid-template-columns: 2.8fr 1fr 1.2fr 1.4fr 2.8fr;
     place-items: center;
     &:focus-within {
       box-shadow: var(--shadow);
@@ -119,21 +121,10 @@
       padding: .5rem .5rem;
     }
     p {
-      grid-area: a;
       justify-self: start;
     }
-    button:first-of-type {
-      grid-area: b;
-    }
-    button:nth-of-type(2) {
-      grid-area: c;
-    }
-    button:nth-of-type(3) {
-      grid-area: d;
-    }
     button:nth-of-type(4) {
-      grid-area: e;
-      justify-self: end;
+      justify-self: end; 
     }
   }
   div:nth-of-type(n+3) {
