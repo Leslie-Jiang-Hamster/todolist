@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useInput, useLocalStorage } from "./hook";
 class Todo {
   constructor(text, active) {
     this.timestamp = Date.now();
@@ -32,19 +32,6 @@ class Todo {
 }
 
 export default function Todos() {
-  const [todos, setTodos] = useState([])
-  const [newText, setNewText] = useState('')
-  const [display, setDisplay] = useState('All')
-  const filterByDisplay = () => {
-    switch (display) {
-      case 'Active':
-        return todos.filter(todo => todo.active)
-      case 'Completed':
-        return todos.filter(todo => !todo.active)
-      default:
-        return todos
-    }
-  }
   const addTodo = (text) => {
     setTodos([...todos, new Todo(text, true)])
   }
@@ -69,10 +56,17 @@ export default function Todos() {
   const isAllCompleted = () => {
     return todos.every(todo => !todo.active)
   }
-  const handleEnter = (e) => {
-    if (e.key === 'Enter' && newText) {
-      addTodo(newText)
-      setNewText('')
+  const [todos, setTodos] = useLocalStorage([])
+  const [display, setDisplay] = useState('All')
+  const { newText, handleChange, handleEnter } = useInput('', addTodo)
+  const filterByDisplay = () => {
+    switch (display) {
+      case 'Active':
+        return todos.filter(todo => todo.active)
+      case 'Completed':
+        return todos.filter(todo => !todo.active)
+      default:
+        return todos
     }
   }
   return (
@@ -81,7 +75,7 @@ export default function Todos() {
         <button onClick={() => isAllCompleted() ? activeAll() : completeAll()}>﹀</button>
         <input type="text" value={newText} 
         placeholder="What needs to be done?"
-        onChange={(e) => setNewText(e.target.value)}
+        onChange={handleChange}
         onKeyDown={handleEnter}/>
       </div>
       {
