@@ -85,7 +85,7 @@ export default function Todos() {
         onKeyDown={handleEnter}/>
       </div>
       {
-        filterByDisplay(todos).map(todo => {
+        filterByDisplay().map(todo => {
           return (
             <li className="u-container" key={todo.timestamp}>
               <button onClick={() => flipTodo(todo.timestamp)}>{todo.active? null : '✔'}</button>
