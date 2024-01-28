@@ -108,6 +108,7 @@
     height: 3.5rem;
     padding: 0 1rem;
     display: grid;
+    grid-template-columns: repeat(6, 1fr), 1.2fr;
     grid-template-areas: 'a . b c d . e';
     place-items: center;
     &:focus-within {
