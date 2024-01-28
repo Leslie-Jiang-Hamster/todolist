@@ -58,7 +58,7 @@ export default function Todos() {
   }
   const [todos, setTodos] = useLocalStorage([])
   const [display, setDisplay] = useState('All')
-  const { newText, handleChange, handleEnter } = useInput('', addTodo)
+  const [newText, handleChange, handleEnter] = useInput('', addTodo)
   const filterByDisplay = () => {
     switch (display) {
       case 'Active':

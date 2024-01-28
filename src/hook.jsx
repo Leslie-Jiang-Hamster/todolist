@@ -8,7 +8,7 @@ export function useInput(initial, callback) {
       setNewText('')
     }
   }
-  return { newText, handleChange, handleEnter }
+  return [newText, handleChange, handleEnter]
 }
 export function useLocalStorage(initial) {
   const [todos, setTodos] = useState(() => {
